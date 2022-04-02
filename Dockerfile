@@ -1,15 +1,6 @@
 FROM danielgran/debian-base
-
-
-RUN apt install -y software-properties-common && \
-    add-apt-repository -y contrib && \
-    add-apt-repository -y non-free && \
-    add-apt-repository -y non-free && \
-    dpkg --add-architecture i386 && \
-    apt update && \
-    apt install -y wine wine32 wine64 mono-complete && \
-    mkdir -p /opt/pbomanager/bin && \
-    PATH="$PATH:/opt/pbomanager/bin" && \
-    alias pbomanager='mono /opt/pbomanager/bin/PBOConsole.exe'
-
+ENV PATH="/opt/pbomanager/bin:${PATH}"
 COPY ./bin /opt/pbomanager/bin
+
+RUN chmod +x /opt/pbomanager/bin/* && \
+    ln -s /opt/pbomanager/bin/JAPM_Linux_x86_64_v0_8 /opt/pbomanager/bin/pbomanager
