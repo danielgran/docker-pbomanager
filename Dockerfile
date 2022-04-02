@@ -10,6 +10,6 @@ RUN apt install -y software-properties-common && \
     apt install -y wine wine32 wine64 mono-complete && \
     mkdir -p /opt/pbomanager/bin && \
     PATH="$PATH:/opt/pbomanager/bin" && \
-    alias pbomanager'mono PBOConsole.exe'
+    alias pbomanager='mono /opt/pbomanager/bin/PBOConsole.exe'
 
 COPY ./bin /opt/pbomanager/bin
