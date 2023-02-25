@@ -1,0 +1,21 @@
+version: 2.1
+
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:current
+    environment:
+      DOCKER_BUILDKIT: 1
+      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/arm64/v8,linux/386,linux/arm/v7,linux/arm/v8
+    steps:
+      - checkout
+      - run:
+          name: Log in to docker hub
+          command: |
+            docker login -u danielgran -p $DOCKERHUBKEY
+      - run:
+          name: Build and push from dockerfile
+          command: |
+            docker buildx create --use
+            docker buildx build --push --tag danielgran/pbomanager:latest --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 .
