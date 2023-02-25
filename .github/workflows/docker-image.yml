@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Docker Login
       uses: docker/login-action@v1.14.1
       with:
@@ -30,10 +30,13 @@ jobs:
 
   build-arm64v8:
 
-    runs-on: macos-11
+    runs-on: macos-12
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Install Docker
+      run: brew install docker
 
     - name: Docker Login
       uses: docker/login-action@v1.14.1
@@ -41,6 +44,6 @@ jobs:
         username: danielgran
         password: ${{ secrets.DOCKERHUBKEY }}
     - name: Build
-      run: docker build . --platform linux/arm64/v8 -t danielgran/pbomanager:macos-11
+      run: docker build . --platform linux/arm64/v8 -t danielgran/pbomanager:macos-12
     - name: Push
-      run: docker push danielgran/pbomanager:macos-11
+      run: docker push danielgran/pbomanager:macos-12
