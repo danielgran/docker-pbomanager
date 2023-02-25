@@ -29,7 +29,7 @@ jobs:
 
   build-arm64v8:
 
-    runs-on: macos-12
+    runs-on: macos-11
 
     steps:
     - uses: actions/checkout@v2
@@ -41,6 +41,6 @@ jobs:
         username: danielgran
         password: ${{ secrets.DOCKERHUBKEY }}
     - name: Build
-      run: docker build . --platform linux/arm64/v8 -t danielgran/pbomanager:macos-12
+      run: docker build . --platform linux/arm64/v8 -t danielgran/pbomanager:macos-11
     - name: Push
-      run: docker push danielgran/pbomanager:macos-12
+      run: docker push danielgran/pbomanager:macos-11
