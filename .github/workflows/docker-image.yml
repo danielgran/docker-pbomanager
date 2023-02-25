@@ -27,7 +27,7 @@ jobs:
     - name: Push
       run: docker push danielgran/pbomanager:ubuntu-latest
 
-  build-arm64/v8:
+  build-arm64v8:
 
     runs-on: macos-12
 
