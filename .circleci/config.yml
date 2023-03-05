@@ -11,6 +11,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Checkout submodules
+          command: |
+            git submodule sync --recursive && git submodule update --recursive --init
+      - run:
           name: Log in to docker hub
           command: |
             docker login -u danielgran -p $DOCKERHUBKEY
