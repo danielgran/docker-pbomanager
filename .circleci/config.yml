@@ -17,5 +17,6 @@ jobs:
       - run:
           name: Build and push from dockerfile
           command: |
+            cd docker-pbomanager
             docker buildx create --use
             docker buildx build --push --tag danielgran/pbomanager:latest --platform linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 .
