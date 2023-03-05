@@ -9,7 +9,7 @@ jobs:
       DOCKER_BUILDKIT: 1
       BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/arm64/v8,linux/386,linux/arm/v7,linux/arm/v8
     steps:
-      - checkout
+      - run: git clone --recursive -b "$CIRCLE_BRANCH" "$CIRCLE_REPOSITORY_URL"
       - run:
           name: Checkout submodules
           command: |
