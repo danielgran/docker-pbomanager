@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Checkout submodules
           command: |
-            git submodule sync --recursive && git submodule update --recursive --init
+            cd docker-pbomanager && git submodule sync --recursive && git submodule update --recursive --init
       - run:
           name: Log in to docker hub
           command: |
