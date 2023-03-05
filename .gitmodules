@@ -1,0 +1,3 @@
+[submodule "bin/arma3pbo"]
+	path = bin/arma3pbo
+	url = https://github.com/danielgran/arma3pbo
