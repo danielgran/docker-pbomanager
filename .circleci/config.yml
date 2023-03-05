@@ -11,10 +11,6 @@ jobs:
     steps:
       - run: git clone --recursive -b "$CIRCLE_BRANCH" "$CIRCLE_REPOSITORY_URL"
       - run:
-          name: Checkout submodules
-          command: |
-            cd docker-pbomanager && git submodule sync --recursive && git submodule update --recursive --init
-      - run:
           name: Log in to docker hub
           command: |
             docker login -u danielgran -p $DOCKERHUBKEY
